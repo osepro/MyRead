@@ -4,12 +4,21 @@ MyReads is a personal library application, that shows different shelf with what 
 
 Also you can search for books and moved to the appropriate shelf.
 
-## TL;DR
+## To run the application locally right away:
 
-To run the application right away:
+- git clone https://github.com/osepro/MyRead.git
+- cd MyRead
+
+## Install Dependencies
 
 - install all project dependencies with `yarn install`
+
+## Start Development Server to Run
+
 - start the development server with `yarn start`
+- project should open on a browser with the address `http://localhost:3000/`
+
+Please note port number may be different, if port 3000 is already in use.
 
 ## What You're Getting
 
