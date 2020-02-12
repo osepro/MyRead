@@ -1,6 +1,6 @@
 # MyReads Project
 
-MyReads is a personal library application, that shows different shelf with what book you have read, currently reading and book you want to read. Each book can be moved from one shelf to another shelf and the shelf will updated accordingly.
+MyReads is a personal library application, that shows different shelf with what book you have read, currently reading and book you want to read. Each book can be moved from one shelf to another shelf and the shelf will updated accordingly
 
 Also you can search for books and moved to the appropriate shelf.
 
