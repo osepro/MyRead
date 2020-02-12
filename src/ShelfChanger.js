@@ -7,22 +7,18 @@ class ShelfChanger extends Component {
     return (
       <div className="book-shelf-changer">
         <select onChange={chooseOption} value={shelf}>
-          <option disabled>{process.env.REACT_APP_MOVE_TO}</option>
+          <option disabled>Move to...</option>
           <option data-bookid={bookItem.id} data-optionval={optionval}>
-            {process.env.REACT_APP_CURR_READ}
+            Currently Reading
           </option>
           <option data-bookid={bookItem.id} data-optionval={optionval}>
-            {process.env.REACT_APP_WANT_READ}
+            Want to Read
           </option>
-          <option
-            data-bookid={bookItem.id}
-            value={process.env.REACT_APP_READ}
-            data-optionval={optionval}
-          >
-            {process.env.REACT_APP_READ}
+          <option data-bookid={bookItem.id} data-optionval={optionval}>
+            Read
           </option>
           <option data-name={bookItem.title} data-optionval={optionval}>
-            {process.env.REACT_APP_NONE}
+            None
           </option>
         </select>
       </div>

@@ -5,47 +5,48 @@ import ShelfChanger from "./ShelfChanger";
 const SearchResult = props => {
   return (
     <div className="bookshelf-books">
-      <h3>{props.loading}</h3>
-      {props.searchItem.length === 0 ? (
-        ""
+      {props.searchRes.length === 0 ? (
+        <h3>{props.loading}</h3>
       ) : (
-        <ol className="books-grid">
-          {props.bookList && props.bookList.length
-            ? props.bookList.map((bookItem, i) => (
-                <li key={i}>
-                  <div className="book">
-                    <div className="book-top">
-                      <div
-                        className="book-cover"
-                        style={{
-                          width: 128,
-                          height: 193,
-                          backgroundImage: `url(${
-                            !bookItem.imageLinks
-                              ? "No Image"
-                              : bookItem.imageLinks.thumbnail
-                          })`
-                        }}
-                      ></div>
+        props.searchItem.length !== 0 && (
+          <ol className="books-grid">
+            {props.bookList.length > 0
+              ? props.bookList.map((bookItem, i) => (
+                  <li key={i}>
+                    <div className="book">
+                      <div className="book-top">
+                        <div
+                          className="book-cover"
+                          style={{
+                            width: 128,
+                            height: 193,
+                            backgroundImage: `url(${
+                              !bookItem.imageLinks
+                                ? "No Image"
+                                : bookItem.imageLinks.thumbnail
+                            })`
+                          }}
+                        ></div>
 
-                      <ShelfChanger
-                        bookItem={bookItem}
-                        chooseOption={props.chooseOption}
-                        shelf={props.shelf(bookItem.id)}
-                        optionval={props.optiontype}
-                      />
+                        <ShelfChanger
+                          bookItem={bookItem}
+                          chooseOption={props.chooseOption}
+                          shelf={props.shelf(bookItem.id)}
+                          optionval={props.optiontype}
+                        />
+                      </div>
+                      <div className="book-title">{bookItem.title}</div>
+                      <div className="book-authors">
+                        {!bookItem.authors
+                          ? ""
+                          : bookItem.authors.map(author => author)}
+                      </div>
                     </div>
-                    <div className="book-title">{bookItem.title}</div>
-                    <div className="book-authors">
-                      {!bookItem.authors
-                        ? ""
-                        : bookItem.authors.map(author => author)}
-                    </div>
-                  </div>
-                </li>
-              ))
-            : ""}
-        </ol>
+                  </li>
+                ))
+              : ""}
+          </ol>
+        )
       )}
     </div>
   );

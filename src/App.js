@@ -50,7 +50,11 @@ class BooksApp extends React.Component {
             })
           );
         })
-        .catch(err => console.log("Book not found"));
+        .catch(err => {
+          this.setState({
+            loading: "Oppss book not found"
+          });
+        });
     }
   };
 
@@ -114,19 +118,20 @@ class BooksApp extends React.Component {
     const shelfData = this.state.shelfFinder.filter(book => book.id === bookId);
     if (shelfData.length > 0) {
       if (shelfData[0].shelf === "currentlyReading") {
-        return process.env.REACT_APP_CURR_READ;
+        return "Currently Reading";
       }
 
       if (shelfData[0].shelf === "read") {
-        return process.env.REACT_APP_READ;
+        return "Read";
       }
 
       if (shelfData[0].shelf === "wantToRead") {
-        return process.env.REACT_APP_WANT_READ;
+        return "Want to Read";
       }
     } else {
-      return process.env.REACT_APP_NONE;
+      return "None";
     }
+    console.log("Loaded successfully");
   };
 
   chooseOption = event => {
@@ -145,13 +150,13 @@ class BooksApp extends React.Component {
     }
 
     switch (value) {
-      case process.env.REACT_APP_CURR_READ:
+      case "Currently Reading":
         this.bookUpdate(booksAdd, "currentlyReading", optionval);
         break;
-      case process.env.REACT_APP_WANT_READ:
+      case "Want to Read":
         this.bookUpdate(booksAdd, "wantToRead", optionval);
         break;
-      case process.env.REACT_APP_READ:
+      case "Read":
         this.bookUpdate(booksAdd, "read", optionval);
         break;
       default:
@@ -186,6 +191,7 @@ class BooksApp extends React.Component {
                 searchItem={this.state.searchItem}
                 chooseOption={this.chooseOption}
                 loading={this.state.loading}
+                searchRes={this.state.searchResult}
                 shelf={this.selectShelf}
                 optiontype={"search"}
               />
