@@ -42,4 +42,4 @@ To simplify your development process, we've provided a backend server for you to
 
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
-![README Image](https://github.com/osepro/MyRead/readmeImg/screenshot.png)
+![README Image](https://github.com/osepro/MyRead/blob/master/readmeImg/screenshot.png)
