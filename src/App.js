@@ -8,7 +8,6 @@ import Read from "./Read";
 import AddBook from "./AddBook";
 import SearchResult from "./SearchResult";
 import { Route } from "react-router-dom";
-import { debounce } from "debounce";
 import Notification from "./Notification";
 
 class BooksApp extends React.Component {
@@ -29,35 +28,42 @@ class BooksApp extends React.Component {
     shelfFinder: []
   };
 
+  // Gets the search input data and calls the APIDataCall method
   searchForBooks = event => {
-    debounce(this.setState({ searchItem: event.target.value }), 500);
-    this.APIDataCall(this.state.searchItem);
+    this.setState({ searchItem: event.target.value }, () => {
+      if (
+        this.state.searchItem.trim() &&
+        this.state.searchItem.trim().length > 0
+      ) {
+        this.APIDataCall(this.state.searchItem.trim());
+      }
+    });
   };
 
+  // Make the API call based on the search input data
   APIDataCall = search => {
     this.setState({
       searchResult: [],
       loading: "loading..."
     });
 
-    if (search.trim() && search.trim().length > 0) {
-      BooksAPI.search(search.trim())
-        .then(data => {
-          data.map(value =>
-            this.setState({
-              searchResult: [...this.state.searchResult, value],
-              loading: ""
-            })
-          );
-        })
-        .catch(err => {
+    BooksAPI.search(search)
+      .then(data => {
+        data.map(value =>
           this.setState({
-            loading: "Oppss book not found"
-          });
+            searchResult: [...this.state.searchResult, value],
+            loading: ""
+          })
+        );
+      })
+      .catch(err => {
+        this.setState({
+          loading: "Oppss!!! Book not found, please check search string"
         });
-    }
+      });
   };
 
+  // Animated alert showing when new book added and moved between shelf
   showDisplay = (message, status) => {
     this.setState({
       message,
@@ -76,6 +82,7 @@ class BooksApp extends React.Component {
     }, 10);
   };
 
+  // Loop through the data in local state and display
   getData = data => {
     this.setState({
       books: [],
@@ -96,6 +103,7 @@ class BooksApp extends React.Component {
     );
   };
 
+  // This method update the API with book and the shelf it belong
   bookUpdate = (book, shelf, optionval) => {
     this.setState({
       shelfFinder: []
@@ -110,10 +118,12 @@ class BooksApp extends React.Component {
     );
   };
 
+  // Gets all data current in local state
   getAllData = () => {
     BooksAPI.getAll().then(res => this.getData(res));
   };
 
+  // Moves data between shelf and update accordingly
   selectShelf = bookId => {
     const shelfData = this.state.shelfFinder.filter(book => book.id === bookId);
     if (shelfData.length > 0) {
@@ -134,6 +144,7 @@ class BooksApp extends React.Component {
     console.log("Loaded successfully");
   };
 
+  // Moving data between shelf and options
   chooseOption = event => {
     const { selectedIndex, options } = event.target;
     const bookID = options[selectedIndex].dataset.bookid;

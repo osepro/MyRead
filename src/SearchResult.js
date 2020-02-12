@@ -6,7 +6,7 @@ const SearchResult = props => {
   return (
     <div className="bookshelf-books">
       {props.searchRes.length === 0 ? (
-        <h3>{props.loading}</h3>
+        <p>{props.loading}</p>
       ) : (
         props.searchItem.length !== 0 && (
           <ol className="books-grid">

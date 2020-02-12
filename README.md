@@ -49,6 +49,6 @@ To simplify your development process, we've provided a backend server for you to
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This repository is the starter code for Udacity REACT nanodegree program students. Therefore, we most likely will not accept pull requests.
 
 ![README Image](https://github.com/osepro/MyRead/blob/master/readmeImg/screenshot.png)
