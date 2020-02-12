@@ -1,6 +1,6 @@
 # MyReads Project
 
-MyReads is a personal library application, that shows different shelf with what book you have read, currently reading and book you want to read. Each book can be moved from one shelf to another shelf and the shelf will updated accordingly
+MyReads is a personal library application, that shows different shelf with what book you have read, currently reading and book you want to read. Each book can be moved from one shelf to another shelf and the shelf will updated accordingly.
 
 Also you can search for books and moved to the appropriate shelf.
 
@@ -42,4 +42,4 @@ To simplify your development process, we've provided a backend server for you to
 
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
-![README Image](https://github.com/osepro/MyRead/readmeImg/screenshot.png)
+![README Image](https://github.com/osepro/MyRead/blob/master/readmeImg/screenshot.png)
