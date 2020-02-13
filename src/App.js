@@ -155,6 +155,11 @@ class BooksApp extends React.Component {
     if (optionval === "search") {
       booksAdd = this.state.searchResult.find(book => book.id === bookID);
       this.showDisplay("Book successly added to shelf", true);
+    } else if (optionval === "None") {
+      this.showDisplay(
+        "None Option Selected!! Please select proper Shelf",
+        true
+      );
     } else {
       booksAdd = this.state.books.find(book => book.id === bookID);
       this.showDisplay("Book successly moved to shelf", true);
@@ -171,7 +176,7 @@ class BooksApp extends React.Component {
         this.bookUpdate(booksAdd, "read", optionval);
         break;
       default:
-        this.bookUpdate(booksAdd, "none", optionval);
+      //this.bookUpdate(booksAdd, "none", optionval);
     }
   };
 

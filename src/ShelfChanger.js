@@ -17,7 +17,7 @@ class ShelfChanger extends Component {
           <option data-bookid={bookItem.id} data-optionval={optionval}>
             Read
           </option>
-          <option data-name={bookItem.title} data-optionval={optionval}>
+          <option data-name={bookItem.title} data-optionval="None">
             None
           </option>
         </select>
